@@ -1,0 +1,39 @@
+<div class="off-canvas-wrap">
+    <div class="inner-wrap">
+        <nav class="tab-bar">
+            <section class="left-small">
+                <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+            </section>
+
+            <section class="middle tab-bar-section">
+                <h1 class="title">Democracy Direct: {{#if currentUserIsRep }} Representative {{else}} Constituent {{/if}} </h1>
+            </section>
+        </nav>
+
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li><label  style="height:45px; line-height:36px" >Dashboard</label></li>
+                {{#if currentUserIsRep }}
+                    <li><a href="#/upcomingBills">Upcoming Bills</a></li>
+                    <li><a href="#/previousBills">Previous Bills</a></li>
+                    <li><a href="#/poll">Poll Constituents</a></li>
+                    <li><a href="#/messageCitizens">Post a Message</a></li>
+                {{else}}
+                    <li><a href="#/upcomingBills">Upcoming Bills</a></li>
+                    <li><a href="#/previousBills">Previous Bills</a></li>
+                    <li><a href="#/tags">Change Your Keywords</a></li>
+                    <li><a href="#/scorecard">Rep. Report Card</a></li>
+                    <li><a href="#/messageRep">Message your Rep.</a></li>
+                {{/if}}
+
+            </ul>
+        </aside>
+        <div class="text-center">
+            <section id="content" style="min-height: 600px" class="main-section"></section>
+        </div>
+
+        <a class="exit-off-canvas"></a>
+
+    </div>
+</div>
+

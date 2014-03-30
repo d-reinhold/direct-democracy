@@ -8,10 +8,10 @@ u6 = Citizen.create!(name: Faker::Name.name)
 u7 = Citizen.create!(name: Faker::Name.name)
 u8 = Citizen.create!(name: Faker::Name.name)
 kirill = Citizen.create!(name: 'Kirill Kireyev')
-greg = Rep.create!(name: 'Greg Coladonto')
+tom = Rep.create!(name: 'Tom Ammiano')
 
-greg.citizens << dom
-greg.citizens << kirill
+tom.citizens << dom
+tom.citizens << kirill
 
 social_justice = Tag.create!(name: 'social justice')
 environment = Tag.create!(name: 'the environment')
@@ -31,19 +31,22 @@ kirill.tags.push public_health
 kirill.tags.push computers
 
 bill1 = Bill.create!(
-  name: 'AB 1649 - Computer Crimes',
-  link: 'http://leginfo.ca.gov/pub/13-14/bill/asm/ab_1601-1650/ab_1649_bill_20140211_introduced.htm',
-  summary: 'This bill would double the fine for both felony and misdemeanor computer crimes, and updates the law with modern language.'
+    name: 'AB 1649 - Computer Crimes',
+    has_polled: false,
+    link: 'http://leginfo.ca.gov/pub/13-14/bill/asm/ab_1601-1650/ab_1649_bill_20140211_introduced.htm',
+    summary: 'This bill would double the fine for both felony and misdemeanor computer crimes, and updates the law with modern language.'
 )
 
 bill2 = Bill.create!(
     name: 'AB 2115 - Cal Fresh',
+    has_polled: false,
     link: 'http://leginfo.ca.gov/pub/13-14/bill/asm/ab_2101-2150/ab_2115_bill_20140220_introduced.htm',
     summary: 'This bill would require country welfare departments to compile lists of available feeding programs for children, as well as make those programs known to CalFresh applicants.'
 )
 
 bill3 = Bill.create!(
     name: 'AB 976 - Coastal Resources',
+    has_polled: true,
     link: 'http://leginfo.ca.gov/pub/13-14/bill/sen/sb_0051-0100/scr_92_bill_20140226_introduced.htm',
     summary: 'This bill would update the California Coastal Act of 1976 to impose harsher consequences on developers who fail to obtain a necessary coastal development permits.'
 )
@@ -52,8 +55,7 @@ bill4 = Bill.create!(
     name: 'AB 148 - Salton Sea Restoration',
     link: 'http://leginfo.ca.gov/pub/13-14/bill/asm/ab_0101-0150/ab_148_bill_20140324_amended_sen_v97.htm',
     summary: 'This bill would help speed up the restoration of the Salton Sea by eliminating the requirement that the secretary and the Legislature have final approval for any proposed restoration plan.',
-    passed: true,
-    result: '78 - 0'
+    has_polled: true
 )
 
 bill5 = Bill.create!(
@@ -61,6 +63,7 @@ bill5 = Bill.create!(
     link: 'http://leginfo.ca.gov/pub/13-14/bill/asm/ab_0251-0300/ab_255_bill_20130319_amended_asm_v98.htm',
     summary: 'This bill would establish a Digital Arts Degree Pilot Program at the California Community Colleges and up to 8 campuses of the California State University.',
     passed: false,
+    has_polled: true,
     result: '23 - 55'
 )
 
@@ -69,9 +72,9 @@ bill6 = Bill.create!(
     link: 'http://leginfo.ca.gov/pub/13-14/bill/asm/ab_0001-0050/ab_37_bill_20121203_introduced.htm',
     summary: 'This bill would improve record keeping requirements for local lead agencies, and would require the state to reimburse local agencies for additional costs.',
     passed: true,
+    has_polled: true,
     result: '78 - 0'
 )
-
 
 
 bill1.tags << computers
@@ -120,6 +123,8 @@ Vote.create!(citizen_id: u3.id, bill_id: bill6.id, value: true)
 Vote.create!(citizen_id: u4.id, bill_id: bill6.id, value: true)
 Vote.create!(citizen_id: u5.id, bill_id: bill6.id, value: true)
 
-Vote.create!(rep_id: greg.id, bill_id: bill4.id, value: true)
-Vote.create!(rep_id: greg.id, bill_id: bill6.id, value: true)
-Vote.create!(rep_id: greg.id, bill_id: bill5.id, value: true)
+Vote.create!(rep_id: tom.id, bill_id: bill6.id, value: true)
+Vote.create!(rep_id: tom.id, bill_id: bill5.id, value: true)
+
+Vote.create!(citizen_id: dom.id, bill_id: bill5.id, value: true)
+Vote.create!(citizen_id: dom.id, bill_id: bill6.id, value: false)

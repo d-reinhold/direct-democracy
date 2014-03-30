@@ -11,6 +11,7 @@ app.Models.Citizen = Backbone.Model.extend({
     data['tags'] = new Backbone.Collection(_.map(data.tags, function(tag) {
       return {id: tag.id, name: tag.name }
     }));
+    data['rep'] = new app.Models.Rep(data.rep);
     return data;
   }
 });

@@ -28,6 +28,20 @@
         console.log('new global listener created!')
       }, false);
     },
+    loginAs: function(role) {
+      if (role === 'citizen') {
+        app.currentUser = app.db.citizen;
+        app.router.navigate('/upcomingBills', {trigger: true});
+      } else {
+        app.currentUser = app.db.rep;
+        app.router.navigate('/upcomingBills', {trigger: true});
+      }
+    },
+
+    currentUserIsRep: function() {
+      return app.currentUser.get('tags') === undefined;
+    },
+
     initApp: function(){
       $.ajaxSetup({async: false});
 //      app.setupEventSource();
@@ -36,10 +50,12 @@
 //      });
       app.db.load();
       app.router = new app.Router();
-      Backbone.history.start({ pushState: false, root: '/' });
       Backbone.emulateHTTP = true;
       $(document).foundation();
+      app.loginAs('citizen');
+      Backbone.history.start({ pushState: false, root: '/' });
     },
+
     env: function() {
       var res = 'http://' + window.location.hostname;
       if (window.location.port) {

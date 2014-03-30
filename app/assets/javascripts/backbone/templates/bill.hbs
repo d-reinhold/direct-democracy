@@ -26,7 +26,9 @@
                     <h3>{{rep_name}}You voted no!</h3>
                 {{/if}}
             {{else}}
-                <p> You'll receive an alert when {{rep_name}} votes on this bill.</p>
+                {{#unless is_rep}}
+                    <p> You'll receive an alert when {{rep_name}} votes on this bill.</p>
+                {{/unless}}
             {{/if}}
         {{else}}
             <h2>Do you support this bill?</h2>

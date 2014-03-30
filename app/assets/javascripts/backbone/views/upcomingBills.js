@@ -2,6 +2,18 @@ app.Views.UpcomingBills = Backbone.View.extend({
   el: "#content",
   template: HandlebarsTemplates['backbone/templates/upcomingBills'],
 
+  initialize: function() {
+    this.bills = app.db.bills.filter(function(bill) {
+      return bill.get('result') === null
+          && bill.get('has_polled')
+          && (app.currentUserIsRep() ||
+            !_.isEmpty(_.intersection(
+               app.db.citizen.get('tags').pluck('name'),
+               bill.get('tags').pluck('name'))
+            ));
+           });
+  },
+
   events: {
     "click button": 'viewBill'
   },
@@ -17,15 +29,9 @@ app.Views.UpcomingBills = Backbone.View.extend({
 
   toJSON: function () {
     return {
-      username: app.db.citizen.get('name'),
-      rep: app.db.citizen.get('rep').name,
-      bills: app.db.bills.chain().filter(function(bill) {
-        return bill.get('result') === null  &&
-               !_.isEmpty(_.intersection(
-                 app.db.citizen.get('tags').pluck('name'),
-                 bill.get('tags').pluck('name'))
-               )
-      }).invoke('toJSON').value()
+      username: app.currentUser.get('name'),
+      rep_name: app.currentUserIsRep() ? 'You are' : (app.currentUser.get('rep').get('name') + ' is '),
+      bills: _(this.bills).invoke('toJSON')
     }
   }
 

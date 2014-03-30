@@ -39,7 +39,7 @@ app.Views.Tags = Backbone.View.extend({
   toJSON: function () {
     return {
       tags: app.db.citizen.get('tags').invoke('toJSON'),
-      rep: app.db.citizen.get('rep').name
+      rep: app.db.citizen.get('rep').get('name')
     }
   }
 });

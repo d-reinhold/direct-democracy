@@ -11,8 +11,10 @@ app.Models.Bill = Backbone.Model.extend({
       id:  this.get('id'),
       tag_names: this.get('tags').pluck('name').join(' and '),
       passed: !!this.get('passed') ? '' : ' not ',
-      result: this.get('result')
-  }
+      result: this.get('result'),
+      has_polled: this.get('has_polled'),
+      summary: this.get('summary')
+    }
   },
 
   parse: function(data) {

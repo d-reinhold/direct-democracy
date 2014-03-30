@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140330153317) do
+ActiveRecord::Schema.define(version: 20140330180050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140330153317) do
     t.string   "summary"
     t.string   "result"
     t.boolean  "passed"
+    t.boolean  "has_polled", default: false
   end
 
   create_table "bills_tags", force: true do |t|
