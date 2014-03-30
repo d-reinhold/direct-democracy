@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Welcome back, Dominick!</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        {{#each bills}}
+            <div class="panel">
+                <h4> Greg Coladonato is voting on <b>{{name}}</b> soon!</h4>
+                <p> This bill may impact '{{tag_names}}'. </p>
+                <button id="{{id}}">View Bill</button>
+            </div>
+        {{/each}}
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Democracy Direct</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag  "application" %>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+    window.app.initApp();
+    })
+  </script>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="main"></div>
+<%= yield %>
+</body>
+</html>
