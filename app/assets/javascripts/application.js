@@ -4,6 +4,7 @@
 //= require ./vendor/underscore.string
 //= require ./vendor/handlebars
 //= require ./vendor/backbone.js
+//= require ./vendor/chart.js
 //= require ./vendor/moment
 //= require ./vendor/foundation/foundation
 //= require_tree ./vendor/foundation

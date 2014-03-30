@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Previous bills in your district</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        {{#each bills}}
+            <div class="panel">
+                <h4><b>{{name}}</b> was {{passed}} passed.</h4>
+                <p> This bill may impact '{{tag_names}}'. </p>
+                <button id="{{id}}">View Bill</button>
+            </div>
+        {{/each}}
+    </div>
+</div>

@@ -3,7 +3,6 @@ class AddBillTable < ActiveRecord::Migration
     create_table :bills do |t|
       t.string :name
       t.string :link
-      t.belongs_to :bill
       t.belongs_to :rep
       t.timestamps
     end

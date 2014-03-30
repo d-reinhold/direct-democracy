@@ -1,13 +1,12 @@
-app.Views.Home = Backbone.View.extend({
+app.Views.UpcomingBills = Backbone.View.extend({
   el: "#content",
-  template: HandlebarsTemplates['backbone/templates/home'],
+  template: HandlebarsTemplates['backbone/templates/upcomingBills'],
 
   events: {
     "click button": 'viewBill'
   },
 
   viewBill: function(e) {
-console.log($(e.currentTarget)[0].id);
     app.router.navigate('#/bills/' + $(e.currentTarget)[0].id, {trigger: true});
   },
 
@@ -21,7 +20,11 @@ console.log($(e.currentTarget)[0].id);
       username: app.db.citizen.get('name'),
       rep: app.db.citizen.get('rep').name,
       bills: app.db.bills.chain().filter(function(bill) {
-        return !_.isEmpty(_.intersection(app.db.citizen.get('tags').pluck('name'), bill.get('tags').pluck('name')))
+        return bill.get('result') === null  &&
+               !_.isEmpty(_.intersection(
+                 app.db.citizen.get('tags').pluck('name'),
+                 bill.get('tags').pluck('name'))
+               )
       }).invoke('toJSON').value()
     }
   }

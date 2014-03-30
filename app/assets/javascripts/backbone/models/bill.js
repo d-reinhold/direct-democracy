@@ -8,8 +8,10 @@ app.Models.Bill = Backbone.Model.extend({
   toJSON: function() {
     return {
       name:  this.get('name'),
+      id:  this.get('id'),
       tag_names: this.get('tags').pluck('name').join(' and '),
-      id: this.get('id')
+      passed: !!this.get('passed') ? '' : ' not ',
+      result: this.get('result')
   }
   },
 

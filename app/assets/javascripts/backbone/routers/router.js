@@ -1,16 +1,22 @@
 app.Router = Backbone.Router.extend({
   routes: {
-    "": "index",
+    "": "upcomingBills",
     "tags": "tags",
-    "bills/:id": "viewBill"
+    "bills/:id": "viewBill",
+    "upcomingBills": "upcomingBills",
+    "previousBills": "previousBills"
   },
 
   initialize: function() {
     this.layout = new app.Views.Layout();
   },
 
-  index: function() {
-    this.layout.renderHome();
+  upcomingBills: function() {
+    this.layout.renderUpcomingBills();
+  },
+
+  previousBills: function() {
+    this.layout.renderPreviousBills();
   },
 
   tags: function() {

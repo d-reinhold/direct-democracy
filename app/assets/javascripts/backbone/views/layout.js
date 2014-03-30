@@ -2,9 +2,16 @@ app.Views.Layout = Backbone.View.extend({
   el: "#main",
   template: HandlebarsTemplates['backbone/templates/main'],
 
-  renderHome: function () {
+  renderUpcomingBills: function () {
     this.$el.html(Handlebars.compile(this.template()));
-    this.home = new app.Views.Home();
+    this.home = new app.Views.UpcomingBills();
+    this.home.render();
+    return this;
+  },
+
+  renderPreviousBills: function () {
+    this.$el.html(Handlebars.compile(this.template()));
+    this.home = new app.Views.PreviousBills();
     this.home.render();
     return this;
   },

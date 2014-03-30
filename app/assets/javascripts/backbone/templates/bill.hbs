@@ -1,18 +1,32 @@
 <div class="row">
     <div class="large-12 columns">
         <h1>{{name}}</h1>
+
         <p>{{summary}}</p>
-        <p>Full bill text available <a href="{{link}}" target="_blank">here</a>.</p>
+
+        <p>Full text of this bill available <a href="{{link}}" target="_blank">here</a>.</p>
     </div>
 </div>
 
 <div class="row">
     <div class="large-12 columns">
-        {{#if voted}}
-            {{#if vote_value }}
+        {{#if you_voted}}
+            <canvas id="votes-chart" width="200" height="200"></canvas>
+            <p>{{voted_yes}}% of constituents voted yes.<br>
+                {{voted_no}}% of constituents voted no.</p>
+            {{#if your_vote_value }}
                 <h3>You voted yes!</h3>
             {{else}}
                 <h3>You voted no!</h3>
+            {{/if}}
+            {{#if rep_voted}}
+                {{#if rep_vote_value }}
+                    <h3>{{rep_name}} voted yes!</h3>
+                {{else}}
+                    <h3>{{rep_name}}You voted no!</h3>
+                {{/if}}
+            {{else}}
+                <p> You'll receive an alert when {{rep_name}} votes on this bill.</p>
             {{/if}}
         {{else}}
             <h2>Do you support this bill?</h2>
